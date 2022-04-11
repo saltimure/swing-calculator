@@ -1,9 +1,9 @@
 package com.saltimure.sandbox.swingapp;
 
-import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,77 +12,70 @@ import javax.swing.JTextField;
 import com.saltimure.sandbox.swingapp.calculator.Calculator;
 
 @SuppressWarnings("serial")
-public class CalculatorFrame extends JFrame {
+public class CalculatorFrame extends JFrame implements ActionListener {
     
     private Calculator calc = new Calculator();
     
+    private JButton enterButton, addButton, substractButton, multiplyButton, divideButton, resultButton;
+    private JTextField calculatorConsole;
+    private ArrayList<JButton> buttonList = new ArrayList<JButton>();
+    
     public CalculatorFrame() {
         //calc components
-        JTextField jTextField = new JTextField("0");
-        jTextField.setPreferredSize(new Dimension(100, 50));
-        JButton jButton = new JButton("Enter");
-        jButton.setPreferredSize(new Dimension(100, 50));
-        JButton addButton = new JButton("+");
-        addButton.setPreferredSize(new Dimension(50, 50));
-        JButton substractButton = new JButton("-");
-        substractButton.setPreferredSize(new Dimension(50, 50));
-        JButton multiplyButton = new JButton("*");
-        multiplyButton.setPreferredSize(new Dimension(50, 50));
-        JButton divideButton = new JButton("/");
-        divideButton.setPreferredSize(new Dimension(50, 50));
-        JButton resultButton = new JButton("=");
-        resultButton.setPreferredSize(new Dimension(50, 50));
+        for (int i = 0; i < 10; i++) {
+            buttonList.add(new JButton("" + i));
+            buttonList.get(i).addActionListener(this);
+            this.add(buttonList.get(i));
+        }
+        calculatorConsole = new JTextField("0");
+        enterButton = new JButton("Enter");
+        addButton = new JButton("+");
+        substractButton = new JButton("-");
+        multiplyButton = new JButton("*");
+        divideButton = new JButton("/");
+        resultButton = new JButton("=");
         
         //buttons actions
-        jButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                calc.getNumbers().add(Integer.parseInt(jTextField.getText()));
-            }
-        });
-        addButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                calc.getSymbols().add("+");
-            }
-        });
-        substractButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                calc.getSymbols().add("-");
-            }
-        });
-        divideButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                calc.getSymbols().add("/");
-            }
-        });
-        multiplyButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                calc.getSymbols().add("*");
-            }
-        });
-        resultButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                jTextField.setText(String.valueOf(calc.calculate(calc.getNumbers(), calc.getSymbols())));
-            }
-        });
+        enterButton.addActionListener(this);
+        addButton.addActionListener(this);
+        substractButton.addActionListener(this);
+        divideButton.addActionListener(this);
+        multiplyButton.addActionListener(this);
+        resultButton.addActionListener(this);
+        GridLayout layout = new GridLayout(4, 3);
         
         this.setTitle("Calculator");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        this.setLayout(new FlowLayout());
-        this.add(jButton);
+        this.setLayout(layout);
+        this.add(enterButton);
         this.add(addButton);
         this.add(substractButton);
         this.add(divideButton);
         this.add(multiplyButton);
         this.add(resultButton);
-        this.add(jTextField);
+        this.add(calculatorConsole);
         this.pack();
         this.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == enterButton) calc.getNumbers().add(Integer.parseInt(calculatorConsole.getText()));
+        if (e.getSource() == addButton) calc.getSymbols().add("+");
+        if (e.getSource() == substractButton) calc.getSymbols().add("-");
+        if (e.getSource() == divideButton) calc.getSymbols().add("/");
+        if (e.getSource() == multiplyButton) calc.getSymbols().add("*");
+        if (e.getSource() == resultButton) calculatorConsole.setText(String.valueOf(calc.calculate(calc.getNumbers(), calc.getSymbols())));
+        if (e.getSource() == buttonList.get(0)) calculatorConsole.setText(calculatorConsole.getText().concat("0"));
+        if (e.getSource() == buttonList.get(1)) calculatorConsole.setText(calculatorConsole.getText().concat("1"));
+        if (e.getSource() == buttonList.get(2)) calculatorConsole.setText(calculatorConsole.getText().concat("2"));
+        if (e.getSource() == buttonList.get(3)) calculatorConsole.setText(calculatorConsole.getText().concat("3"));
+        if (e.getSource() == buttonList.get(4)) calculatorConsole.setText(calculatorConsole.getText().concat("4"));
+        if (e.getSource() == buttonList.get(5)) calculatorConsole.setText(calculatorConsole.getText().concat("5"));
+        if (e.getSource() == buttonList.get(6)) calculatorConsole.setText(calculatorConsole.getText().concat("6"));
+        if (e.getSource() == buttonList.get(7)) calculatorConsole.setText(calculatorConsole.getText().concat("7"));
+        if (e.getSource() == buttonList.get(8)) calculatorConsole.setText(calculatorConsole.getText().concat("8"));
+        if (e.getSource() == buttonList.get(9)) calculatorConsole.setText(calculatorConsole.getText().concat("9"));
     }
 }
