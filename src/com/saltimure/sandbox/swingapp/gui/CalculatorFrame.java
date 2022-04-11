@@ -18,14 +18,14 @@ public class CalculatorFrame extends JFrame implements ActionListener {
     
     private JButton enterButton, addButton, substractButton, multiplyButton, divideButton, resultButton;
     private JTextField calculatorConsole;
-    private ArrayList<JButton> buttonList = new ArrayList<JButton>();
+    private ArrayList<JButton> buttonsOfNumbersList = new ArrayList<JButton>();
     
     public CalculatorFrame() {
         //calc components
         for (int i = 0; i < 10; i++) {
-            buttonList.add(new JButton("" + i));
-            buttonList.get(i).addActionListener(this);
-            this.add(buttonList.get(i));
+            buttonsOfNumbersList.add(new JButton("" + i));
+            buttonsOfNumbersList.get(i).addActionListener(this);
+            this.add(buttonsOfNumbersList.get(i));
         }
         calculatorConsole = new JTextField("0");
         enterButton = new JButton("Enter");
@@ -70,15 +70,15 @@ public class CalculatorFrame extends JFrame implements ActionListener {
         if (e.getSource() == divideButton) calc.getSymbols().add("/");
         if (e.getSource() == multiplyButton) calc.getSymbols().add("*");
         if (e.getSource() == resultButton) calculatorConsole.setText(String.valueOf(calc.calculate(calc.getNumbers(), calc.getSymbols())));
-        if (e.getSource() == buttonList.get(0)) calculatorConsole.setText(calculatorConsole.getText().concat("0"));
-        if (e.getSource() == buttonList.get(1)) calculatorConsole.setText(calculatorConsole.getText().concat("1"));
-        if (e.getSource() == buttonList.get(2)) calculatorConsole.setText(calculatorConsole.getText().concat("2"));
-        if (e.getSource() == buttonList.get(3)) calculatorConsole.setText(calculatorConsole.getText().concat("3"));
-        if (e.getSource() == buttonList.get(4)) calculatorConsole.setText(calculatorConsole.getText().concat("4"));
-        if (e.getSource() == buttonList.get(5)) calculatorConsole.setText(calculatorConsole.getText().concat("5"));
-        if (e.getSource() == buttonList.get(6)) calculatorConsole.setText(calculatorConsole.getText().concat("6"));
-        if (e.getSource() == buttonList.get(7)) calculatorConsole.setText(calculatorConsole.getText().concat("7"));
-        if (e.getSource() == buttonList.get(8)) calculatorConsole.setText(calculatorConsole.getText().concat("8"));
-        if (e.getSource() == buttonList.get(9)) calculatorConsole.setText(calculatorConsole.getText().concat("9"));
+        if (e.getSource() == buttonsOfNumbersList.get(0)) calculatorConsole.setText(calculatorConsole.getText().concat("0"));
+        if (e.getSource() == buttonsOfNumbersList.get(1)) calculatorConsole.setText(calculatorConsole.getText().concat("1"));
+        if (e.getSource() == buttonsOfNumbersList.get(2)) calculatorConsole.setText(calculatorConsole.getText().concat("2"));
+        if (e.getSource() == buttonsOfNumbersList.get(3)) calculatorConsole.setText(calculatorConsole.getText().concat("3"));
+        if (e.getSource() == buttonsOfNumbersList.get(4)) calculatorConsole.setText(calculatorConsole.getText().concat("4"));
+        if (e.getSource() == buttonsOfNumbersList.get(5)) calculatorConsole.setText(calculatorConsole.getText().concat("5"));
+        if (e.getSource() == buttonsOfNumbersList.get(6)) calculatorConsole.setText(calculatorConsole.getText().concat("6"));
+        if (e.getSource() == buttonsOfNumbersList.get(7)) calculatorConsole.setText(calculatorConsole.getText().concat("7"));
+        if (e.getSource() == buttonsOfNumbersList.get(8)) calculatorConsole.setText(calculatorConsole.getText().concat("8"));
+        if (e.getSource() == buttonsOfNumbersList.get(9)) calculatorConsole.setText(calculatorConsole.getText().concat("9"));
     }
 }
