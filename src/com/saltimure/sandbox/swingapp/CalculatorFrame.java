@@ -18,7 +18,7 @@ public class CalculatorFrame extends JFrame {
     
     public CalculatorFrame() {
         //calc components
-        JTextField jTextField = new JTextField();
+        JTextField jTextField = new JTextField("0");
         jTextField.setPreferredSize(new Dimension(100, 50));
         JButton jButton = new JButton("Enter");
         jButton.setPreferredSize(new Dimension(100, 50));

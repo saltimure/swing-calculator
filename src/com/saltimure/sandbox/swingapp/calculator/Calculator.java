@@ -8,10 +8,11 @@ public class Calculator {
     private ArrayList<String> symbols = new ArrayList<>();
     
     public int calculate(ArrayList<Integer> numbers, ArrayList<String> symbols) {
-        int result = numbers.get(0);
-        int i = 1;
-        for (String symbol: symbols) {
-            switch (symbol) {
+        if (numbers.isEmpty() == false && symbols.isEmpty() == false && numbers.size() > symbols.size()) {
+            int result = numbers.get(0);
+            int i = 1;
+            for (String symbol: symbols) {
+                switch (symbol) {
                 case "+": 
                     result += numbers.get(i);
                     break;
@@ -24,12 +25,17 @@ public class Calculator {
                 case "*": 
                     result *= numbers.get(i);
                     break;
+                }
+                ++i;
             }
-            ++i;
+            symbols.clear();
+            numbers.clear();
+            return result;
+        } else {
+            symbols.clear();
+            numbers.clear();
+            return 0;
         }
-        symbols.clear();
-        numbers.clear();
-        return result;
     }
 
     public ArrayList<Integer> getNumbers() {
