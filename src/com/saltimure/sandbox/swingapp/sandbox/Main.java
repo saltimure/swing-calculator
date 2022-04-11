@@ -1,4 +1,6 @@
-package com.saltimure.sandbox.swingapp;
+package com.saltimure.sandbox.swingapp.sandbox;
+
+import com.saltimure.sandbox.swingapp.gui.CalculatorFrame;
 
 public class Main {
 

@@ -1,4 +1,4 @@
-package com.saltimure.sandbox.swingapp;
+package com.saltimure.sandbox.swingapp.gui;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
