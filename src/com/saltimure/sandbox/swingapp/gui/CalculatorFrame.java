@@ -64,7 +64,7 @@ public class CalculatorFrame extends JFrame implements ActionListener {
         if (e.getSource() == enterButton) {
             calc.getNumbers().add(Integer.parseInt(calculatorConsole.getText()));
             calculatorConsole.setText("");
-        }
+        } 
         else if (e.getSource() == addButton) calc.getSymbols().add("+");
         else if (e.getSource() == substractButton) calc.getSymbols().add("-");
         else if (e.getSource() == divideButton) calc.getSymbols().add("/");
